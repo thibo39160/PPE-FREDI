@@ -11,7 +11,7 @@
  * @author thibaud
  */
 class class_connexion {
-    //put your code here
+    
 }
-
+echo "lol";
 ?>

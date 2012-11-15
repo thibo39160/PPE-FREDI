@@ -11,8 +11,18 @@
  * @author thibaud
  */
 class class_connexion {
+ 
+    
+    
+public function __construct() 
+   {
+    
+   }
+    
+    
+    
+    
     
 }
-echo "lol";
-echo "2 lol"
+
 ?>

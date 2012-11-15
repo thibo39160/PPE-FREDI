@@ -14,4 +14,5 @@ class class_connexion {
     
 }
 echo "lol";
+echo "2 lol"
 ?>

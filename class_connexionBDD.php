@@ -16,17 +16,27 @@ class class_connexion {
       	private static $_bdd='dbname=fredi';   		
       	private static $_user='root' ;    		
       	private static $_mdp='' ;
-        private static $liaison=null ;
+        private static $_liaison=null ;
         
         function __construct() { }
         function connexionBDD()
         {
-           $this->liaison = mysql_connect($this->_serveur, $this->_user, $this->_mdp);
+            
+           $this->_liaison = mysql_connect($this->_serveur, $this->_user, $this->_mdp);
+           if ($this->_liaison == false) {
+              echo "<script>alert('Erreur lors de connexion');</script>"; 
+           }
+           else
+           {
             mysql_select_db($this->_bdd);
+           }
         }
         function deconnexionBDD()
         {
-            
+            $test = mysql_close($this->_liaison);
+            if ($test == false) {
+                echo "<script>alert('Erreur lors de la deconnexion');</script>";
+            }
         }
 
     

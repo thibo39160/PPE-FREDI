@@ -12,53 +12,66 @@
  */
 class class_utilisateur {
 
-     private $_login;       //nom d'utilisateur = adresse e-mail
-     private $_password;    //mot de passe utilisateur
-     private $_numlicence;
-     private $_numligue;
-     private $_datenaissance;
-     private $_sexe;
-     private $_notification;
-     private $_nbnotification;
+     private  $_login;       //nom d'utilisateur = adresse e-mail
+     private  $_password;    //mot de passe utilisateur
+     private  $_numlicence;
+     private  $_numligue;
+     private  $_datenaissance;
+     private  $_sexe;
+     private  $_notification;
+     private  $_nbnotification;
     
-    
-     public function __contruct($login, $password, $numlicence = null, $datenaissance = null, $sexe = null, $notification = null, $nbnotification = null)
+    //____Constructeur______________________________________________________________________________________________________________________________________________________________________________
+     
+     public function __contruct($login, $password, $numlicence = null, $numligue = null, $datenaissance = null, $sexe = null, $notification = null, $nbnotification = null)
      {
-         if($numlicence == null)
+         if($numlicence == null)//object avec login et mdp donc Object dans la BDD
          {
-             //constructeur $login + mdp
+             $requete = "Select * from adherent where login ='".$login."'and mdp='".$password."'";
          }
          else
          {
-            $_login = $login;       
-            $_password = $password;    
-            $_numlicence = $numlicence;
-            $_numligue = $numligue;
-            $_datenaissance = $datenaissance;
-            $_sexe = $sexe;
-            $_notification = $notification;
-            $_nbnotification = $nbnotification;
+            $this->_login = $login;       
+            $this->_password = $password;    
+            $this->_numlicence = $numlicence;
+            $this->_numligue = $numligue;
+            $this->_datenaissance = $datenaissance;
+            $this->_sexe = $sexe;
+            $this->_notification = $notification;
+            $this->_nbnotification = $nbnotification;
             
             $requete = "";
          }
      }
      
-    function newuser()
+     //____Getter & Setter______________________________________________________________________________________________________________________________________________________________________________
+        
+        //Setter pour uniquement la modification du profil : Login, mdp, numligue (on pars du princi^pe que la date de naissance change pas ...)
+        public function get_login() { return $this->_login; }
+        public function set_login($value) { $this->_login = $value; }
+        public function get_password() { return $this->_password; }
+        public function set_password($value) { $this->_password = $value; }
+        public function get_numligue() { return $this->_numligue; }
+        public function set_numligue($value) { $this->_numligue = $value; }
+        public function get_numlicence() { return $this->_numlicence; }
+        public function get_datenaissance() { return $this->_datenaissance; }
+        public function get_sexe() { return $this->_sexe; }
+        public function get_notification() { return $this->_notification; }
+        public function get_nbnotificatio() { return $this->nbnotificatio; }
+     
+     //____Function______________________________________________________________________________________________________________________________________________________________________________
+        
+    function Connexion()
+    {
+
+    }
+    
+    function Inscription()
     {
         
     }
-     
-    function Krieg_Connexion()
-    {
-
-    }
     
-    function Krieg_Inscription()
-    {
-
-    }
-    
-    function Krieg_Connexion_Utilisateur()
+    function Connexion_Utilisateur()
     {
 
     }

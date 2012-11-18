@@ -3,23 +3,37 @@
 
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title>sans titre 1</title>
+<title>Index.php</title>
+<link rel="stylesheet" type="text/css" href="general.css" />
 </head>
 
 <body>
     
     <?PHP 
+    
+    session_start();
+    
+        if (isset($_SESSION['Connect'])) {}
+        else {$_SESSION['Connect']=false;}
+    
         if ($_SESSION['Connect']==false) {
             echo '<div id="GlobalConnexion">
-                    <form>
+                    <form method="POST" action="traitementconnexion.php"> 
+                        <br><br><br><br>
                         <div id="textLogin">Login:</div>
-                        <div input type="text" name="login" id="login" />
-                        <div id="textPassword">Password:</div>
-                        <div input type="password" name="password" id="password" />
-                        <div input type="submit">
+                        <input type="text" name="login" id="login" />
+                        <div id="textPassword"><br>Password:</div>
+                        <input type="password" name="password" id="password" />
+                        <br><br><input type="submit">
+                        <br><br><br><br>
+                        Mot de passe oublié ?<span <span style="margin-left:110px;">
+                        Pas encore inscrit ?</span>
                     </form>   
                 </div>';
             
+        }
+        else{
+        echo "lol";
         }
     ?>
 </body>

@@ -10,13 +10,14 @@
 <body>
     
     <?PHP 
-    
-    session_start();
-    
-        if (isset($_SESSION['Connect'])) {}
-        else {$_SESSION['Connect']=false;}
-    
-        if ($_SESSION['Connect']==false) {
+
+        session_start();
+        if(isset($_SESSION['Pass']))
+        {
+            echo "test pass ok";
+        }
+        else
+        {
             echo '<div id="GlobalConnexion">
                     <form method="POST" action="traitementconnexion.php"> 
                         <br><br><br><br>
@@ -32,9 +33,7 @@
                 </div>';
             
         }
-        else{
-        echo "lol";
-        }
+
     ?>
 </body>
 

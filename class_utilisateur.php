@@ -10,7 +10,7 @@
  *
  * @author thibaud
  */
-class class_utilisateur {
+class utilisateur {
 
      private  $_login;       //nom d'utilisateur = adresse e-mail
      private  $_password;    //mot de passe utilisateur
@@ -25,26 +25,27 @@ class class_utilisateur {
     
      public function __contruct($login, $password, $numlicence = null, $numligue = null, $datenaissance = null, $sexe = null, $notification = null, $nbnotification = null)
      {
-         if($numlicence == null)//object avec login et mdp donc Object dans la BDD
-         {
-            /* $req = "Select * from adherents where login ='".$login."'and mdp='".$password."'";
-             $res = mysql_query($req);
-             $resultat = mysql_fetch_array($res);
-             $this->_login = $resultat[""]*/
-         }
-         else
-         {
-            $this->_login = $login;       
+            //temporaire pour les tests 
+         
+            /*$this->_login = $login;       
             $this->_password = $password;    
             $this->_numlicence = $numlicence;
             $this->_numligue = $numligue;
             $this->_datenaissance = $datenaissance;
             $this->_sexe = $sexe;
             $this->_notification = $notification;
-            $this->_nbnotification = $nbnotification;
+            $this->_nbnotification = $nbnotification;*/
             
-            $requete = "";
-         }
+            $this->_login = "kriegwilliamsen@gmail.com";       
+            $this->_password = "design";    
+            $this->_numlicence = "numlicence";
+            $this->_numligue = "numligue";
+            $this->_datenaissance = "datenaissance";
+            $this->_sexe = "sexe";
+            $this->_notification = "notification";
+            $this->_nbnotification = "nbnotification";
+
+
      }
      
      //____Getter & Setter______________________________________________________________________________________________________________________________________________________________________________
@@ -69,20 +70,24 @@ class class_utilisateur {
         
      //____Function______________________________________________________________________________________________________________________________________________________________________________
         
-    function Connexion($obj_user)//renvoie true au false pour la varriable de session
+    function Connexion($log, $pass)//renvoie true au false pour la varriable de session
     {
-       
+
+      $req = mysql_query("select * from demandeurs where adresse-mail like '".$log."' and mdp like '".$pass."';");
+      if ($req==false) {
+      }
+      else {
+          $test=true;         
+      }
+      $test =true;
+        return true;
     }
     
     function Inscription()
     {
         
     }
-    
-    function Connexion_Utilisateur()
-    {
 
-    }
     
     
     

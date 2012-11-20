@@ -9,11 +9,15 @@
 
 <body>
 
-
+    <?php
+        require_once ("class_connexionBDD.php");
+        require_once ("class_utilisateur.php");
+    ?>
+    
   <ul>
     <li><a href="home.php"><span>Home</span></a></li>
     <li><a href="profil.php"><span>Profil</span></a></li>
-    <li><a><span>Deconnexion</span></a></li>
+    <li><a><span>Deconnexion<!--Appel function deco / objet passer en variable de sessions--></span></a></li>
   </ul>
 
     

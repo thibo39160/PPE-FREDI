@@ -9,12 +9,15 @@
 
 <body>
     
-    <?PHP 
-
-        session_start();
+    <?PHP session_start();
         if(isset($_SESSION['Pass']))
         {
-            echo "test pass ok";
+            if($_SESSION['Pass']==true)
+            {
+                echo "test pass ok"; //pour l'instant aucune différence entre demandeurs et adherents
+                
+                
+            }
         }
         else
         {
@@ -28,13 +31,12 @@
                         <br><br><input type="submit">
                         <br><br><br><br>
                         Mot de passe oublié ?<span <span style="margin-left:110px;">
-                        Pas encore inscrit ?</span>
+                        <a href="inscription.php">Pas encore inscrit ?</a></span>
                     </form>   
                 </div>';
-            
-        }
-
-    ?>
+        }session_destroy();//pour le teste
+            ?>
+        
 </body>
 
 </html>

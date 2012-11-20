@@ -1,38 +1,27 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of class_connexion
- *
- * @author thibaud
- */
-class class_connexion {
+class connexion {
  
-    	private static $_serveur='mysql:host=localhost';
-      	private static $_bdd='dbname=fredi';   		
-      	private static $_user='root' ;    		
-      	private static $_mdp='' ;
-        private static $_liaison=null ;
+    	private static $_liaison;
+
         
         function __construct() { }
         function connexionBDD()
-        {
-            
-           $this->_liaison = mysql_connect($this->_serveur, $this->_user, $this->_mdp);
+        {     
+           $this->_liaison = mysql_connect("localhost","root","");
            if ($this->_liaison == false) {
-              echo "<script>alert('Erreur lors de connexion');</script>"; 
+              echo "<script>alert('Erreur lors de connexion BDD');</script>"; 
            }
            else
            {
-            mysql_select_db($this->_bdd);
+            mysql_select_db("fredi");
+            echo "<script>alert('Choix BDD OK');</script>"; 
            }
         }
+        
         function deconnexionBDD()
         {
+            $test = true;
             $test = mysql_close($this->_liaison);
             if ($test == false) {
                 echo "<script>alert('Erreur lors de la deconnexion');</script>";

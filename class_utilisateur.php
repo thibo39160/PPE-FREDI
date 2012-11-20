@@ -36,7 +36,7 @@ class utilisateur {
             $this->_notification = $notification;
             $this->_nbnotification = $nbnotification;*/
             
-            $this->_login = "kriegwilliamsen@gmail.com";       
+            $this->_login = "kriegwilliamsen@gmail.com2";       
             $this->_password = "design";    
             $this->_numlicence = "numlicence";
             $this->_numligue = "numligue";
@@ -73,13 +73,6 @@ class utilisateur {
     function Connexion($log, $pass)//renvoie true au false pour la varriable de session
     {
 
-      $req = mysql_query("select * from demandeurs where adresse-mail like '".$log."' and mdp like '".$pass."';");
-      if ($req==false) {
-      }
-      else {
-          $test=true;         
-      }
-      $test =true;
         return true;
     }
     

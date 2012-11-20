@@ -6,6 +6,7 @@ class connexion {
 
         
         function __construct() { }
+        
         function connexionBDD()
         {     
            $this->_liaison = mysql_connect("localhost","root","");
@@ -21,7 +22,7 @@ class connexion {
         
         function deconnexionBDD()
         {
-            $test = true;
+            $test = true; //WTF ? JEREM !!!
             $test = mysql_close($this->_liaison);
             if ($test == false) {
                 echo "<script>alert('Erreur lors de la deconnexion');</script>";

@@ -23,19 +23,14 @@ class utilisateur {
     
     //____Constructeur______________________________________________________________________________________________________________________________________________________________________________   
     
-     public function __contruct($login, $password, $numlicence = null, $numligue = null, $datenaissance = null, $sexe = null, $notification = null, $nbnotification = null)
+     public function __contruct($login, $password, $inscription ,$numlicence, $numligue = null, $datenaissance = null, $sexe = null, $notification = null, $nbnotification = null)
      {
-            //temporaire pour les tests 
-         
-            /*$this->_login = $login;       
-            $this->_password = $password;    
-            $this->_numlicence = $numlicence;
-            $this->_numligue = $numligue;
-            $this->_datenaissance = $datenaissance;
-            $this->_sexe = $sexe;
-            $this->_notification = $notification;
-            $this->_nbnotification = $nbnotification;*/
-            
+         if ($numlicence == null) {
+             //requete pour créer l'objet en function du $login, $password
+         }
+         if ( $inscription == true )//en cas d'inscription
+         {}
+            //valeur de teste
             $this->_login = "kriegwilliamsen@gmail.com2";       
             $this->_password = "design";    
             $this->_numlicence = "numlicence";

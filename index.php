@@ -10,6 +10,7 @@
 <body>
     
     <?PHP session_start();
+        
         if(isset($_SESSION['Pass']))
         {
             if($_SESSION['Pass']==true)

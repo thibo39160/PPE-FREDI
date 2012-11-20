@@ -3,20 +3,19 @@
 
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title>Panel.php</title>
+<title>home.php</title>
 <link rel="stylesheet" type="text/css" href="general.css" />
-<link rel="stylesheet" href="styles.css" type="text/css" />
 </head>
 
 <body>
 
-    <div id="tabs">
+
   <ul>
-    <li><a href=""><span>Home</span></a></li>
-    <li><a href=""><span>Profil</span></a></li>
-    <li><a href=""><span>Deconnexion</span></a></li>
+    <li><a href="home.php"><span>Home</span></a></li>
+    <li><a href="profil.php"><span>Profil</span></a></li>
+    <li><a><span>Deconnexion</span></a></li>
   </ul>
-</div>
+
     
         
 </body>

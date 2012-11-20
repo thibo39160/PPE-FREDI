@@ -67,13 +67,18 @@ class utilisateur {
         
     function Connexion($log, $pass)//renvoie true au false pour la varriable de session
     {
-
+        
         return true;
     }
     
     function Inscription()
     {
         
+    }
+    
+    function Deconnexion()
+    {
+        session_destroy();
     }
 
     

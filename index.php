@@ -35,7 +35,7 @@
                         <a href="inscription.php">Pas encore inscrit ?</a></span>
                     </form>   
                 </div>';
-        }session_destroy();//pour le teste
+        }
             ?>
         
 </body>

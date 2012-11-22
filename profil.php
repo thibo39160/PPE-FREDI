@@ -8,9 +8,29 @@ $_SESSION['valide'];
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <title>sans titre 1</title>
+
+<!--William merKi de pas touké -->
+
+<link rel="stylesheet" type="text/css" href="general.css" />
+<?php
+
+echo "<style type='text/css'>
+   #profil_link
+  {
+    background-color: whitesmoke;
+    width: 100px 
+  }
+  </style>";
+
+include 'navigation.php';
+?>
+
+<!--Mais toutes ma partie en commentaire si sa te géne pour les testes vus que sa cache le haut-->
+
+
 </head>
 
-<body>
+<body><!--   CHEF SA A RIEN A FAIRE DANS PROFIL SA XD C'EST DANS FICHEFRAIS.php       WTF ?   -->
     
     <?php
     include("class_Frais.php");
@@ -34,10 +54,8 @@ $_SESSION['valide'];
 <input name="send" type="submit" value="Valider votre choix">
 </form>
 <?php
- }
- else
- {
-?>
+    }
+    ?>
 <p>
 </p>
     
@@ -56,7 +74,7 @@ $_SESSION['valide'];
 </form>
 <?php
 }
-}
+
 ?>
 </body>
 

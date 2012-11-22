@@ -1,6 +1,9 @@
+<?php
+    session_start();
+    print_r($_SESSION);  
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <title>Index.php</title>
@@ -9,13 +12,13 @@
 
 <body>
     
-    <?PHP session_start();
+    <?PHP 
         
-        if(isset($_SESSION['Pass']))
+        if(isset($_SESSION['Pass']) && !empty($_SESSION['Pass']))
         {
             if($_SESSION['Pass']==true)
             {
-                echo "test pass ok"; //pour l'instant aucune différence entre demandeurs et adherents
+                header('Location: home.php');  
                 
                 
             }
@@ -24,7 +27,7 @@
         {
             echo '<div id="GlobalConnexion">
                     <form method="POST" action="traitementconnexion.php"> 
-                        <br><br><br><br>
+                        <br><br><br>
                         <div id="textLogin">Login:</div>
                         <input type="text" name="login" id="login" />
                         <div id="textPassword"><br>Password:</div>
@@ -36,6 +39,7 @@
                     </form>   
                 </div>';
         }
+        
             ?>
         
 </body>

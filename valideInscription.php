@@ -31,7 +31,9 @@
             
             $qidVerif->execute();
             
-            if ($courriel = $qidVerif->) {
+            $row = $qidVerif->setFetchMode(PDO::FETCH_ASSOC);
+            
+            if ($courriel == $row['adresse-mail']) {
                 
                 echo 'Vous &ecirctes d&eacutej&agrave inscrit !';                                                
             }

@@ -16,43 +16,43 @@ function verif_formulaire()
     
  if(Nom == "")  {
    alert("Veuillez entrer votre nom!");
-   Nom.focus();
    return false;
+   Nom.focus();
   }
  if(Prenom == "")  {
-   alert("Veuillez entrer votre pr&eacutenom!");
-   Prenom.focus();
+   alert("Veuillez entrer votre pr&eacutenom!");   
    return false;
+   Prenom.focus();
  }
  if(Sexe == "")  {
    alert("Veuillez entrer votre sexe!");
-   Sexe.focus();
    return false;
+   Sexe.focus();
  }
  if(MDP == "") {
-   alert("Veuillez entrer votre mot de passe!");
-   MDP.focus();
+   alert("Veuillez entrer votre mot de passe!");   
    return false;
+   MDP.focus();
   }
  if(Courriel == "") {
-   alert("Veuillez mettre l'@!");
-   Courriel.focus();
+   alert("Veuillez mettre l'@!");   
    return false;
+   Courriel.focus();
   }
  if(Courriel.indexOf('@') == -1) {
-   alert("Veuillez mettre l'@!");
-   Courriel.focus();
+   alert("Veuillez mettre l'@!");   
    return false;
+   Courriel.focus();
   }
  if(Rue == "") {
-   alert("Veuillez entrer votre adresse!");
-   Rue.focus();
+   alert("Veuillez entrer votre adresse!");   
    return false;
+   Rue.focus();
   }
  if(CP == "" || isNaN(CP)) {
-   alert("Le code postal doit &ecirctre un nombre!");
-   CP.focus();
+   alert("Le code postal doit &ecirctre un nombre!");   
    return false;
+   CP.focus();
   }
  var chkZ = 1;
  for(i=0;i<CP.value.length;++i)
@@ -60,15 +60,16 @@ function verif_formulaire()
    || CP.value.charAt(i) > "98091")
      	 chkZ = -1;
  if(chkZ == -1) {
-   alert("votre code postal n'est pas correcte !");
-       CP.focus();
+   alert("votre code postal n'est pas correcte !");       
    return false;
+   CP.focus();
   }
  if(Ville == "") {
-   alert("Veuillez entrer votre ville!");
-   Ville.focus();
+   alert("Veuillez entrer votre ville!");   
    return false;
-  }  
+   Ville.focus();
+  }
+
 }
 
 //-->
@@ -78,12 +79,12 @@ function verif_formulaire()
 
 <h1>Inscription</h1>
 <p>Les champs avec * sont obligatoires</p>
-<form name="formulaire" action="valideInscription.php" method="post" onSubmit="return verif_formulaire()">
+<form name="formulaire" action="valideInscription.php" method="post" OnSubmit="return verif_formulaire()">
 <pre>
 *Nom:     <input type="text" size="40" name="nom">
 *Prenom:     <input type="text" size="40" name="prenom">
 *Sexe:     <input type="text" size="40" name="sexe">
-*Mot de Passe:  <input type="text" size="40" name="mot_de_passe"> <form>
+*Mot de Passe:  <input type="password" size="40" name="mot_de_passe"> <form>
 *Adresse-mail:   <input type="text" size="40" name="courriel">
 *Rue:    <input type="text" size="40" name="rue">
 *Code-Postal:    <input type="text" size="40" name="cp">

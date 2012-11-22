@@ -7,9 +7,29 @@
 </head>
 
 <body>
-    <p>
-        lol
-     </p>   
+    
+    <?php
+    include("class_Frais.php");
+    
+	    
+            $objet = new class_Frais();
+    ?>
+<select name="utilisateur">
+                
+		<?php
+		$retour = $objet->GetUtlisateur();
+                echo $retour;
+		?>
+</select>
+<select name="utilisateur">
+                
+		<?php
+		
+                
+		$retour = $objet->GetUtlisateur();
+                echo $retour;
+		?>
+</select>
 </body>
 
 </html>

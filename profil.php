@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION['valide'];
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -13,23 +17,47 @@
     
 	    
             $objet = new class_Frais();
+            
     ?>
-<select name="utilisateur">
-                
+    <?php
+    if($_SESSION['valide']==false)
+    {
+    ?>
+<form action="profil.php" method="post">
+<select name="utilisateur">               
 		<?php
-		$retour = $objet->GetUtlisateur();
-                echo $retour;
+                $retourUtilisateur = $objet->GetUtlisateur();
+                echo $retourUtilisateur;
+                $_SESSION['valide'] = true;
 		?>
 </select>
-<select name="utilisateur">
+<input name="send" type="submit" value="Valider votre choix">
+</form>
+<?php
+ }
+ else
+ {
+?>
+<p>
+</p>
+    
+<?php if(isset($_POST['send']))
+{
+?>
+<form action="" method="post">
+<select name="numeroFiche">
                 
 		<?php
-		
-                
-		$retour = $objet->GetUtlisateur();
-                echo $retour;
+
+                  $retourFiche = $objet->getNumeroFicheDeFrais();
+                  echo $retourFiche;
 		?>
 </select>
+</form>
+<?php
+}
+}
+?>
 </body>
 
 </html>

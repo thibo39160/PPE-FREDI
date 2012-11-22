@@ -23,23 +23,38 @@ class utilisateur {
     
     //____Constructeur______________________________________________________________________________________________________________________________________________________________________________   
     
-     public function __contruct($login, $password, $inscription ,$numlicence, $numligue = null, $datenaissance = null, $sexe = null, $notification = null, $nbnotification = null)
+     public function __contruct($login=null, $password=null, $numlicence = null, $numligue = null, $datenaissance = null, $sexe = null, $notification = null, $nbnotification = null)
      {
-         if ($numlicence == null) {
-             //requete pour créer l'objet en function du $login, $password
-         }
-         if ( $inscription == true )//en cas d'inscription
-         {}
-            //valeur de teste
-            $this->_login = "kriegwilliamsen@gmail.com2";       
-            $this->_password = "design";    
-            $this->_numlicence = "numlicence";
-            $this->_numligue = "numligue";
-            $this->_datenaissance = "datenaissance";
-            $this->_sexe = "sexe";
-            $this->_notification = "notification";
-            $this->_nbnotification = "nbnotification";
+         if ($login == null) 
+         {//connexion
+             //constructeur vide pour appel des functions comme la connexion ...
 
+         }
+         if ($login != null && $password != null)
+         {
+             
+             $this->_login = $login;
+             $this->_password = $password;
+             $req = "select * from demandeurs where 'adresse-mail' like'".$login."' and mdp";
+
+             
+             
+         }
+         else
+         {
+             
+             $this->_login = $login;
+             $this->_datenaissance = $datenaissance;
+             $this->_nbnotification = $nbnotification;
+             $this->_notification = $notification;
+             $this->_numlicence = $numlicence;
+             $this->_numligue = $numligue;
+             $this->_password = $password;
+             $this->_sexe = $sexe;
+         }
+         
+
+         
 
      }
      
@@ -67,8 +82,19 @@ class utilisateur {
         
     function Connexion($log, $pass)//renvoie true au false pour la varriable de session
     {
+        $bool = false;
         
-        return true;
+        $req="select * from demandeurs where `adresse-mail` like '".$log."' and `mdp` like '".$pass."'";
+        $rep = mysql_query($req);
+        if(mysql_num_rows($rep) == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
     
     function Inscription()
@@ -80,6 +106,8 @@ class utilisateur {
     {
         session_destroy();
     }
+    
+
 
     
     

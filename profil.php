@@ -9,23 +9,6 @@ $_SESSION['valide'];
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <title>sans titre 1</title>
 
-<!--William merKi de pas touké -->
-
-<link rel="stylesheet" type="text/css" href="general.css" />
-<?php
-
-echo "<style type='text/css'>
-   #profil_link
-  {
-    background-color: whitesmoke;
-    width: 100px 
-  }
-  </style>";
-
-include 'navigation.php';
-?>
-
-<!--Mais toutes ma partie en commentaire si sa te géne pour les testes vus que sa cache le haut-->
 
 
 </head>

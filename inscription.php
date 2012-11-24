@@ -8,6 +8,33 @@
 
 <body>
 
+    <!--Pour Micka : Inscription = Table Adherent :
+    Etape :
+
+    1 :  Formulaire d'inscription
+    2 :  Validation du formulaire = Renvoie sur une page X
+    3 :  Sur la page X
+    4 :  Recup des variables
+    5 :  Création d'un objet utilisateur
+    6 :  Appel de la methode inscription de l'objet ;   $user->Inscription(passage de toutes mles variable nécessaire)
+    7 :  Affichage : Votre inscription a bien été prise en compte, un mail de validation vous a été envoyé
+    8 :  Validation du mail passage d'un champ X de table adherent de False à True
+    9 :  Affichage : Vous allez être redirigez vers la apge de connexion = index.php
+    
+    (
+    
+    Pour les paramétres d'inscription :
+    
+    Nom = input
+    Prenom = input
+    Num-ligue = liste des ligues de la tables Ligues
+    Date naissance : Calandrier ou input
+    Sexe = Soit H soit F = selection
+    le champ X = False
+    )
+    
+    -->
+    
 </body>
 
 </html>

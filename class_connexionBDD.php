@@ -22,7 +22,6 @@ class connexion {
         
         function deconnexionBDD()
         {
-            $test = true; //WTF ? JEREM !!!
             $test = mysql_close($this->_liaison);
             if ($test == false) {
                 echo "<script>alert('Erreur lors de la deconnexion');</script>";

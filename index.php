@@ -24,32 +24,24 @@
         }
         else
         {
-            echo '<div id="GlobalConnexion">
+            ?><div id="GlobalConnexion">
                     <form method="POST" action="traitementconnexion.php"> 
                         
-                        <div id="textnom">Nom:</div>
-                        <input type="text" name="nom" id="nom" />
-                        
-                        <div id="textprenom"><br>Prenom:</div>
-                        <input type="text" name="prenom" id="prenom" />
-                        
-                        <div id="textlicense"><br>Numero License Sportive:</div>
-                        <input type="text" name="license" id="license" />
+                        <div id="login">E-Mail:</div>
+                        <input type="text" name="login" id="login" />
+       
+                        <div id="password"><br>Mot de passe:</div>
+                        <input type="text" name="password" id="password" />
                         <br><br>
                         <input type="submit" name="submit" id="submit" value="Connexion">
-                        <br><br>Pour les besoins du cours :
-                        <br>Nom: NomTest  <br>Prenom: PrenomTest   <br>Numero: 4548 <br><br>
-                        Mot de passe oublié ?<br>
                         <a href="inscription.php">Pas encore inscrit ?</a>
-                        <br><br>
                         <div id="deconnexion_link"><a href="deconnexion.php">DESTRUCT</a></div> 
-
-
-                    </form>   
-                </div>';
+                     </form>   
+                </div>
+            <?PHP
+            
         }
-        
-            ?>
+    ?>
         
 </body>
 

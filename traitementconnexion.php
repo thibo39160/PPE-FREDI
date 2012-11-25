@@ -5,14 +5,13 @@
     
     $coBDD = new connexion();
     $coBDD->connexionBDD();
-    $nom = $_POST['nom'];
-    $num = $_POST['license'];
-    $prenom = $_POST['prenom'];
+    $login = $_POST['login'];
+    $password = $_POST['password'];
+    
     
 
     $user = new utilisateur();
-    $_SESSION['Pass'] = $user->Connexion($num ,$nom, $prenom);
-    print_r($_SESSION['Pass']);
+    $_SESSION['Pass'] = $user->Connexion($login, $password);
     $coBDD->deconnexionBDD();
 
     

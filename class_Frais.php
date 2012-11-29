@@ -64,11 +64,11 @@
             $today = date("j, n, Y");
             $requete = "
                 INSERT INTO `lignes_frais`
-                (`adresse-mail`, `date`, `motif`, `trajet`, `km`, `cout-peage`, `cout-repas`, `cout-hebergement`, `km-validé`, `peage-validé`, `repas-validé`, `hebergement-validé`, `valide`) 
-                VALUES ('".$mail."', '".$today."', '".$motif."', '".$nbkm."', '".$trajet."', '".$nbkm."', '".$peage."', '".$hebergement."','0','0','0','0','0')
+                (`adresse-mail`, `date`, `motif`, `trajet`, `km`, `cout-peage`, `cout-repas`, `cout-hebergement`, `km-valide`, `peage-valide`, `repas-valide`, `hebergement-valide`, `valide`) 
+                VALUES ('".$mail."', NOW(), '".$motif."', '".$nbkm."', '".$trajet."', '".$nbkm."', '".$peage."', '".$hebergement."','0','0','0','0','0')
                 ";
-            $test = mysql_query($requete);
-            if ($test == true) {
+            $test = mysql_query($requete) or die(mysql_error());
+            if ($test === true) {
                 return true;
             }
             else {

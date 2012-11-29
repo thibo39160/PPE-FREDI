@@ -1,7 +1,10 @@
 <!--
 To change this template, choose Tools | Templates
 and open the template in the editor.
---><?php session_start(); ?>
+--><?php session_start(); 
+            require_once ("class_connexionBDD.php");
+            $coBDD = new connexion();
+            $coBDD->connexionBDD();?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -52,17 +55,24 @@ and open the template in the editor.
                             Saisie du nouvelle fiche de frais, pensez à bien remplir tout les champs
                         </div>
                         <br>Adresse E-mail :<br>
-                        <input type="text" class="text" id="mail"/><br>
+                        <input type="text" class="text" id="mail" name="mail"/><br>
                         Motif :<br>
-                        <input type="text" id="Fiche_Motif"/><br>
-                        Trajet effectué  : [VilleDépart-VilleArrivé]<br>
-                        <input type="text" id="Fiche_trajet" /><br>
+                        <select name="Fiche_Motif">';
+                        
+        $query = mysql_query("SELECT * FROM motifs");
+        while($data = mysql_fetch_array($query))
+        {
+            echo "<option value=\"".$data['libelle']."\">".$data['libelle']."</option>\n";
+        }
+        
+        echo '</select><br>Trajet effectué  : [VilleDépart-VilleArrivé]<br>
+                        <input type="text" id="Fiche_trajet" name="Fiche_trajet"/><br>
                         Nombre de kilométres :<br>
-                        <input type="text" id="Fiche_Km" /><br>
+                        <input type="text" id="Fiche_Km" name="Fiche_Km"/><br>
                         Cout du péage :<br>
-                        <input type="text" id="Fiche_Cout-peage" /><br>
+                        <input type="text" id="Fiche_Cout-peage" name="Fiche_Cout-peage" /><br>
                         Cout hébergement : <br>
-                        <input type="text"  id="Fiche_Cout-hebergement"><br>
+                        <input type="text"  id="Fiche_Cout-hebergement" name="Fiche_Cout-hebergement"><br>
                         <br>
                         <input type="submit" id="Fiche_validation" onclick="validation()" class="btn" value="Valider"/>
                         <input type="button" id="Fiche_annulation" onclick="annulation()" class="btn" value="Annuler"/>
@@ -70,7 +80,7 @@ and open the template in the editor.
             </div>
             
 
-             </form> ';
+             </form>';
         
         ?>
         

@@ -10,17 +10,8 @@
 
     </head>
     <body>
-            <?php
-
-        echo "<style type='text/css'>
-           #home_link
-          {
-            background-color: whitesmoke;
-            width: 100px 
-          }
-          </style>";
-
-        include 'navigation.php';
+     <?
+       include 'navigation.php';
     ?>
 
     </body>

@@ -24,7 +24,7 @@
         }
         else
         {
-            ?><div id="GlobalConnexion">
+            echo'<div id="GlobalConnexion">
                     <form method="POST" action="traitementconnexion.php"> 
                         
                         <div id="login">E-Mail:</div>
@@ -37,8 +37,8 @@
                         <a href="inscription.php">Pas encore inscrit ?</a>
                         <div id="deconnexion_link"><a href="deconnexion.php">DESTRUCT</a></div> 
                      </form>   
-                </div>
-            <?PHP
+                </div>';
+            
             
         }
     ?>

@@ -1,5 +1,6 @@
 <html>
-<head>
+<head>> 
+<LINK rel="stylesheet" type="text/css" href="general.css">
 <title>Inscription</title>
 <script type="text/javascript">
 <!--

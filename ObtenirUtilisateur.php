@@ -1,13 +1,13 @@
 
 
 <?php
-
+session_start();
 
 
 /**
- * Code qui sera aeeplé par un objet XHR et qui
- * retournera la liste déroulante des départements
- * correspondant à la région sélectionnée.
+ * Code qui sera appelé par un objet XHR et qui
+ * retournera la liste déroulante des numero de fiche de frais
+ * correspondant à l'a région'utilisateur sélectionnée.
  */
 /* Paramètres de connexion */
 include ("class_connexionBDD.php");
@@ -37,10 +37,15 @@ if(false !== $idr)
     /* Maintenant on peut construire la liste déroulante */
     $liste = "";
     $liste .= '<select name="departement" id="departement">'."\n";
+    
     for($d = 0; $d < $nd; $d++)
     {
-        $liste .= '  <option value="'. $code_dept[$d] .'">'. $code_dept[$d] .'</option>'."\n";
+        $liste .= '  <option value="'. $code_dept[$d] .'">'. $code_dept[$d] .'</option>'."\n";      
     }
+    if($nd==0)
+    {
+      $liste.= '<option value="'. $_SESSION['fiche'] .'">'. $_SESSION['fiche'] .'</option>';  
+    }   
     $liste .= '</select>'."\n";
     /* Un petit coup de balai */
     mysql_free_result($rech_dept);

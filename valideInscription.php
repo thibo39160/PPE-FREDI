@@ -1,4 +1,8 @@
 <?php
+        
+        include 'class_connexionBDD.php';
+        include 'class_utilisateur.php';
+        
         // informations inscription        
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
@@ -14,31 +18,44 @@
         $PrenomAdmin = 'Mickael';
         $MailAdmin = 'micka_thibaut@hotmail.fr';
 
-        // informations BDD
+        /* informations BDD
         $bdd = 'mysql:host=localhost;dbname=fredi';        
         $login = 'root';
-        $mdpbdd = '';
+        $mdpbdd = ''; */
 
         try{
-            $cnx = new PDO($bdd,$login,$mdpbdd);
-            $cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            /*$cnx = new PDO($bdd,$login,$mdpbdd);
+            $cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);*/
+            
+            //Appel de la fonction connexon BDD de la class connexion
+            $cnx = new connexion();
+            $cnx->connexonBDDinPDO();
+            $connexion = $cnx->_liaison;
+            
 
-            $reqVerif = "select count(*) from demandeur where `adresse-mail` = ?";
+            //Appel de la function checkUsersInBdd() de la class utilisateur
+            $utilisateur = new utilisateur();    
+            $utilisateur->init($nom,$prenom,$sexe,$mdp,$courriel,$rue,$cp,$ville,$numrecu);
+            $sqlresult = $utilisateur->checkUsersInBdd($connexion);
+            
+            /*$reqVerif = "select count(*) from demandeur where `adresse-mail` = ?";
             
             $qidVerif = $cnx->prepare($reqVerif);
             
             $qidVerif->bindParam(1, $courriel, PDO::PARAM_STR,20);
             
-            $sqlresult = $qidVerif->rowCount();
+            $sqlresult = $qidVerif->rowCount();*/
             
-            if ($sqlresult =! 0 ) {
+            if ($sqlresult > 0 ) {
                           
                     echo 'Vous &ecirctes d&eacutej&agrave inscrit ! <br><br><br>';
             }            
                         
-            else {           
+            else {                     
+                    //Appel de la function Inscription() de la class utilisateur
+                    $utilisateur->Inscription($connexion,$NomAdmin,$PrenomAdmin,$MailAdmin);
             
-                    $req = "INSERT into demandeurs (`adresse-mail`,nom,prenom,rue,cp,ville,`num-recu`,mdp,sexe) VALUES (?,?,?,?,?,?,?,?,?)";
+                    /*$req = "INSERT into demandeurs (`adresse-mail`,nom,prenom,rue,cp,ville,`num-recu`,mdp,sexe) VALUES (?,?,?,?,?,?,?,?,?)";
 
                     $qid =  $cnx->prepare($req);
 
@@ -127,11 +144,12 @@
                     //==========
 
                     echo 'Vous avez &eacutet&eacute inscrit avec succ&egraves ! Vous aller revevoir un mail d\'activation, veuillez consulter votre bo&icircte mail pour l\'activation de votre de compte';
-
+                    */
                 }
-        
+            
+            /*
             $qidVerif->closeCursor();
-            $cnx=NULL;
+            $cnx=NULL;*/
                  
             echo '<br>';
             echo '<br>';

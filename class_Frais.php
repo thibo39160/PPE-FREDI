@@ -12,9 +12,7 @@
  */
 class class_Frais {
     //put your code here
-    
-    
-    
+        
 public function __construct() 
    {
     

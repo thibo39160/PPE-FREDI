@@ -1,26 +1,63 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
 <head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title>sans titre 1</title>
-</head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" xml:lang="fr" />
+<title>Gestion Fiche de Frais</title>
+<script type="text/javascript" src="./dept_xhr.js" charset="iso_8859-1"></script>
 
-<body>
+<?php
+include ("class_connexionBDD.php");
+$coBDD = new connexion();
+$connexion = $coBDD->connexionBDD();
 
-    <select name="utilisateur">
-           <?php
-
+switch ($action)
+{
+    
+    case  "Choix":
+    {
+        if($connexion != false)
+        {
+            $sql = "select nom,prenom from demandeurs";
+            $recherche = mysql_query($sql);
+            /* Création du tableau PHP des valeurs récupérées */
+            $regions = array();
+            /* Index du département par tableau régional */
+            $id = 0;
+            while($ligne = mysql_fetch_assoc($recherche))
+            {
+                $regions[$ligne['nom']] = $ligne['nom'];
+            }   
+        ?>
+        </head>
+        <body style="font-family: verdana, helvetica, sans-serif; font-size: 85%">
+        <form action="profil.php" method="post" id="chgdept">
+          <fieldset style="border: 3px double #333399">
+          <legend>Utilisateur</legend>
+            <select name="region" id="region" onchange="getDepartements(this.value);">
+              <option value="vide">- - - Choisissez un utilisateur - - -</option>
+            <?php
+            /* Construction de la première liste : on se sert du tableau PHP */
+            foreach($regions as $nr => $nom)
+            {
+                ?>
+            <option value="<?php echo($nr); ?>"><?php echo($nom); ?></option>
+            <?php
+            }
             ?>
-    </select>
-    <select name="utilisateur">
-           <?php
-                          $requete=mysql_query("SELECT * FROM etudiants");
-                          while ($ligne= mysql_fetch_array($requete))
-                      {
-                             echo '<option value="'.$ligne['NomEtudiant'].'">'.$lignes['PrenomEtudiant'].'</option>';
-                      }
-            ?>
-    </select>
+            </select>
+          <span id="blocDepartements"></span><br />
+          <input type="submit" name="ok" id="ok" value="Envoyer" />
+          </fieldset>
+        </form>
+        <?php
+        }
+    }
+    
+    case  "Validation":
+    {
+    }
+}
+
+?>
 </body>
-
+</html>

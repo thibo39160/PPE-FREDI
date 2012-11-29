@@ -11,7 +11,7 @@ class utilisateur {
      
      
         
-    function Connexion($login, $mdp,)//renvoie true au false pour la varriable de session : 
+    function Connexion($login, $mdp)//renvoie true au false pour la varriable de session : 
     {     
         $requete = "select * from demandeurs where 'adresse-mail' like '".$login."' and 'mdp' like '".$mdp."'"; //ECRITURE REQUETE
         $requete = mysql_query($requete); //EXECUTION REQUETE  
@@ -24,10 +24,10 @@ class utilisateur {
         return $bool; //RENVOIR UN BOOL POUR LA VARIABLE DE SESSION ['PASS']
     }
     
-    function Inscription()
+    /*function Inscription()
     {
 
-    }    
+    }    */
 }
 
 ?>

@@ -7,7 +7,7 @@ $bdd = new connexion();
 class PDF extends FPDF
 {
 
-	 function LoadData($bdd)
+	function LoadData($bdd)
 {
 	$host = "localhost";
         $user = "root";
@@ -17,11 +17,11 @@ class PDF extends FPDF
          mysql_connect($host, $user,$passwd) or die("erreur de connexion au serveur");
          mysql_select_db($bdd) or die("erreur de connexion a la base de donnees");
                         
-        $query = "Select date, motif, trajet,`km-valide`,`peage-valide`,`repas-valide`,`hebergement-valide` from ligne_frais";
-	$result = mysql_query($query);
-        $data = array();
+        $query = "Select date, motif, trajet,`km-valide`,`peage-valide`,`repas-valide`,`hebergement-valide` from lignes_frais";
+	$result = mysql_query($query) or die(mysql_error());
+        $ress = array();
 	$i = 0;
-	while($data = $result->fetch())
+	while($data = mysql_fetch_assoc($result))
 	{
 		$ress[$i] = $data;
 		$i++;
@@ -32,19 +32,19 @@ class PDF extends FPDF
 	function Header()
 	{
 		// Logo
-		$this->Image('fredi.jpg',10,6,30);
+		$this->Image('fredi.png',20,6,90);
 		$this->Ln(20);
 		// Police Arial gras 15
 		$this->SetFont('Arial','B',16);
 		
 		// cellule du Titre
-		$this->Cell(5,10,'Note de frais des bénévoles','C');
+		$this->Cell(5,10,'Note de frais des benevoles','C');
 		
 		// Décalage à droite
 		$this->Cell(140);
 		
 		// cellule de l'année
-		$an='Année civile '.Date("Y");
+		$an='Annee civile '.Date("Y");
 		$w = $this->GetStringWidth($an)+6;
 		//$this->SetX(10);
 		$this->SetFillColor(175,255,192);
@@ -84,18 +84,18 @@ function FancyTable($header, $ress)
     foreach($ress as $row)
     {
 	
-		$row['total']= ($row['km_valide']*0.28) + ($row['peage_valide']) + ($row['repas_valide']) + ($row['heberg_valide']);
+		$row['total']= ($row['km-valide']*0.28) + ($row['peage-valide']) + ($row['repas-valide']) + ($row['hebergement-valide']);
 		
         $this->Cell($w[0],6,$row['date'],'LR',0,'C',$fill);
         $this->Cell($w[1],6,$row['motif'],'LR',0,'L',$fill);
 		$this->Cell($w[2],6,$row['trajet'],'LR',0,'L',$fill);
 		$this->SetTextColor(0,119,116);
-        $this->Cell($w[3],6,number_format($row['km_valide'],0,',',' '),'LR',0,'C',$fill);
+        $this->Cell($w[3],6,number_format($row['km-valide'],0,',',' '),'LR',0,'C',$fill);
 	$this->SetTextColor(0);
-		$this->Cell($w[4],6,number_format($row['km_valide']*0.28,0,',',' '),'LR',0,'C',$fill);
-		$this->Cell($w[5],6,number_format($row['peage_valide'],0,',',' '),'LR',0,'C',$fill);
-		$this->Cell($w[6],6,number_format($row['repas_valide'],0,',',' '),'LR',0,'C',$fill);
-        $this->Cell($w[7],6,number_format($row['heberg_valide'],0,',',' '),'LR',0,'C',$fill);
+		$this->Cell($w[4],6,number_format($row['km-valide']*0.28,0,',',' '),'LR',0,'C',$fill);
+		$this->Cell($w[5],6,number_format($row['peage-valide'],0,',',' '),'LR',0,'C',$fill);
+		$this->Cell($w[6],6,number_format($row['repas-valide'],0,',',' '),'LR',0,'C',$fill);
+        $this->Cell($w[7],6,number_format($row['hebergement-valide'],0,',',' '),'LR',0,'C',$fill);
     $this->SetTextColor(0,119,116);
 		$this->Cell($w[8],6,number_format($row['total'],0,',',' '),'LR',0,'C',$fill);
     $this->SetTextColor(0);
@@ -253,7 +253,7 @@ function FancyTable($header, $ress)
 		// Epaisseur du cadre (1 mm)
 		$this->SetLineWidth(1);
 		// cellule : position et texte
-		$this->Cell(100,5,"Partie réservée à l'association",5,5,'C',true);
+		$this->Cell(100,5,"Partie reservee a l'association",5,5,'C',true);
 		$this->Cell(100,5,'',5,5,'C',true);
 		$this->SetFont('Arial','',10);
 		$texte="N° d'ordre du Reçu :       ".Date("Y")."-".$resso;
@@ -261,7 +261,7 @@ function FancyTable($header, $ress)
 		$this->Cell(100,5,'',5,5,'C',true);
 		$this->Cell(100,5,"Remis le :",5,5,'L',true);
 		$this->Cell(100,5,'',5,5,'C',true);
-		$this->Cell(100,5,"Signature du Trésorier : ",5,5,'L',true);
+		$this->Cell(100,5,"Signature du Tresorier : ",5,5,'L',true);
 		$this->Cell(100,5,'',5,5,'C',true);
 	}
 
@@ -281,34 +281,34 @@ $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
 
-$pdf->caseBG("Je soussigné(e)");
+$pdf->caseBG("Je soussigne(e)");
 $pdf->caseC("Jean-Christophe Berbier");
 $pdf->caseBG("demeurant");
-$pdf->caseC("12, rue de Marron, 54600 Villers lès Nancy");
+$pdf->caseC("12, rue de Marron, 54600 Villers les Nancy");
 $pdf->caseBG("certifie renoncer au remboursement des frais ci-dessous et les laisser à l'association");
 $pdf->caseC("Salle d'Armes de Villers lès Nancy, 1 rue Rodin - 54600 Villers lès Nancy");
 $pdf->caseBG("en tant que don.");
 $pdf->Ln(8);
-$pdf->deplacement("Frais de déplacement","Tarif kilométrique appliqué pour le remboursement : 0,28 €");
+$pdf->deplacement("Frais de deplacement","Tarif kilometrique applique pour le remboursement : 0,28 €");
 
 
 // Titres des colonnes
-$header = array('Date', 'Motif', 'trajet', 'Kms', 'Coût trajet', 'Péage', 'Repas','Hébergement', 'Total');
+$header = array('Date', 'Motif', 'trajet', 'Kms', 'Cout trajet', 'Peage', 'Repas','Hebergement', 'Total');
 // Chargement des données
 $ress = $pdf->LoadData($bdd);
 $pdf->SetFont('Arial','',9);
 $total=$pdf->FancyTable($header,$ress);
 $pdf->Ln(2);
-$pdf->caseBG("Je suis le représentant légal des adhérents suivants :");
+$pdf->caseBG("Je suis le representant legal des adherents suivants :");
 
 //copier et modifier la fonction caseC
 //pour adapter l'affichage des adhérents selon leur nombre
-$pdf->caseC("Théo Berbier, licence n° 170540010338 ");
+$pdf->caseC("Theo Berbier, licence n° 170540010338 ");
 
 $pdf->don("Montant total des dons",$total.' €');
-$pdf->caseBI("Pour bénéficier du reçu de dons, cette note de frais doit être accompagnée de toutes les justificatifs correspondants");
+$pdf->caseBI("Pour beneficier du reçu de dons, cette note de frais doit être accompagnée de toutes les justificatifs correspondants");
 $pdf->lieuDate("A","Le");
-$pdf->signature("Signature du bénévole");
+$pdf->signature("Signature du benevole");
 /*$resso = $pdf->LoadDataa($bdd);
 $pdf->partAssoc($resso);*/
 

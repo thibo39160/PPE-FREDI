@@ -6,6 +6,8 @@
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/navigation.css"/>
 
     </head>
     <body>

@@ -1,0 +1,55 @@
+#inscription{
+    margin-left:auto;
+    margin-right: auto;
+    height: 400px;
+    width: 800px;
+    background-color:whitesmoke;
+    color:#3e3e3e;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    z-index: 1;
+    padding-top: 100px;
+    padding-left: 300px;
+    
+}
+
+#title{
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 150px;
+    height: 50px;
+    width: 800px;
+    background-color: black;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #2e2e2e;
+    text-align: center;
+    color:whitesmoke;
+    size: 14em;
+    padding-top: 9px;      
+}
+
+input{
+    
+    width: 200px; 
+    background-color: white;
+    border:simple ;
+}
+#input_nom{margin-left: 200px;}
+#input_ville{margin-left: 204px;}
+#input_cp{margin-left: 200px;}
+#input_mail{margin-left: 150px;}
+#input_mdp{margin-left: 147px;}
+#input_cp{margin-left: 155px;}
+#input_rue{margin-left: 207px;}
+#inscription_reset{margin-left: 200px;}
+#inscription_id{margin-left: 200px;}
+#input_prenom{margin-left: 182px;}
+#input_sexe{margin-left: 201px;}
+#inscription_id{width: 120px; background-color: #9e9e9e;color:#2c2c2c; margin-left: 0px;}
+#inscription_reset{width: 120px; background-color: #9e9e9e;color:#2c2c2c;margin-left: 202px;}

@@ -17,7 +17,6 @@ class connexion {
            else
            {
             mysql_select_db("fredi");
-            echo "<script>alert('Choix BDD OK');</script>"; 
             return true;
            }
         }

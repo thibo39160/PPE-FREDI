@@ -93,28 +93,28 @@
                     $renvoi2 .= '<form action="v_ConfirmationMiseJourTableComptable.php?id=1" method="post" id="lol">';
 		    $renvoi2 .='<label for="idFrais"> km :</label>';
 		    $renvoi2 .='<input type="text" name="km" size="10" maxlength="5" value="'.$data2['km'].'" >';
-                    $renvoi2 .='<input type="submit" value="Corriger" />';
+                    $renvoi2 .='<input type="submit" value="Valider cette ligne" />';
 		    $renvoi2 .='</form>';
 		    $renvoi2 .='</p>'; 
                     $renvoi2 .='<p>';
                     $renvoi2 .= '<form action="v_ConfirmationMiseJourTableComptable.php?id=2" method="post" id="lol">';
 		    $renvoi2 .='<label for="idFrais"> cout-peage :</label>';
 		    $renvoi2 .='<input type="text" name="coutPeage" size="10" maxlength="5" value="'.$data2['coutpeage'].'" >';
-                    $renvoi2 .='<input type="submit" value="Corriger" />';
+                    $renvoi2 .='<input type="submit" value="Valider cette ligne" />';
 		    $renvoi2 .='</form>';
 		    $renvoi2 .='</p>';
                     $renvoi2 .='<p>';
                     $renvoi2 .= '<form action="v_ConfirmationMiseJourTableComptable.php?id=3" method="post" id="lol">';
 		    $renvoi2 .='<label for="idFrais"> cout-repas :</label>';
 		    $renvoi2 .='<input type="text" name="coutRepas" size="10" maxlength="5" value="'.$data2['coutrepas'].'" >';
-                    $renvoi2 .='<input type="submit" value="Corriger" />';
+                    $renvoi2 .='<input type="submit" value="Valider cette ligne" />';
 		    $renvoi2 .='</form>';
 		    $renvoi2 .='</p>';
                     $renvoi2 .='<p>';
                     $renvoi2 .= '<form action="v_ConfirmationMiseJourTableComptable.php?id=4" method="post" id="lol">';
 		    $renvoi2 .='<label for="idFrais"> cout-hebergement :</label>';
 		    $renvoi2 .='<input type="text" name="coutHebergement" size="10" maxlength="5" value="'.$data2['couthebergement'].'">';
-                    $renvoi2 .='<input type="submit" value="Corriger" />';
+                    $renvoi2 .='<input type="submit" value="Valider cette ligne" />';
 		    $renvoi2 .='</form>';
                     $renvoi2 .='</p>';
                     $renvoi2 .='<p>';
@@ -137,22 +137,22 @@
                         mysql_select_db($bdd) or die("erreur de connexion a la base de donnees");
             if($unid == '1')
             {
-                $query ="UPDATE lignes_frais,demandeurs set `km`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
+                $query ="UPDATE lignes_frais,demandeurs set `km-valide`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
                 $result = mysql_query($query);
             }
             if($unid == '2')
             {
-                $query ="UPDATE lignes_frais,demandeurs set `cout-peage`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
+                $query ="UPDATE lignes_frais,demandeurs set `peage-valide`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
                 $result = mysql_query($query);
             }
             if($unid == '3')
             {
-                $query ="UPDATE lignes_frais,demandeurs set `cout-repas`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
+                $query ="UPDATE lignes_frais,demandeurs set `repas-valide`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
                 $result = mysql_query($query);
             }
             if($unid == '4')
             {
-                $query ="UPDATE lignes_frais,demandeurs set `cout-hebergement`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
+                $query ="UPDATE lignes_frais,demandeurs set `hebergement-valide`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
                 $result = mysql_query($query);
             }          
         }

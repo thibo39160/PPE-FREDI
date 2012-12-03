@@ -2,7 +2,7 @@
 
 class connexion {
  
-    	private static $_liaison;
+    	private  $_liaison;
 
         
         function __construct() { }

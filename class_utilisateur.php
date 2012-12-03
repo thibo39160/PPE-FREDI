@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class utilisateur {
  
     private $nom;
@@ -30,14 +30,24 @@ class utilisateur {
         
     function Connexion($login, $mdp)//renvoie true au false pour la varriable de session : 
     {     
-        $requete = "select * from demandeurs where 'adresse-mail' like '".$login."' and 'mdp' like '".$mdp."'"; //ECRITURE REQUETE
-        $requete = mysql_query($requete); //EXECUTION REQUETE  
+        $_SESSION['login'] = $login;
+        $_SESSION['mdp'] = $mdp;
         
-            if (mysql_num_rows($requete) == 1) //TEST LE NOMBRE DE LIGNE RECUPEREES
+        $requete = "select * from demandeurs where demandeurs.`adresse-mail` = '$login' and demandeurs.`mdp` = '$mdp'"; //ECRITURE REQUETE
+        $resultat = mysql_query($requete); //EXECUTION REQUETE 
+        
+        
+            if (mysql_num_rows($resultat) == 1) //TEST LE NOMBRE DE LIGNE RECUPEREES
             {
                  $bool = true;
+                 
+                 $type = mysql_fetch_array($resultat);
+                 $_SESSION['type']=$type['type'];
+                
             }
-            else {$bool = false;}              
+            else {$bool = false;}  
+       
+        
         return $bool; //RENVOIR UN BOOL POUR LA VARIABLE DE SESSION ['PASS']
     }
     

@@ -26,12 +26,12 @@ and open the template in the editor.
             $trajet = $_POST['Fiche_trajet'];
         
             require_once ("class_connexionBDD.php");
-            require_once ("class_Frais.php");
-            
             $coBDD = new connexion();
+            $coBDD->connexionBDD();
+            
+            require_once ("class_Frais.php");
             $objFrais = new class_Frais();
             
-            $coBDD->connexionBDD();
             $test = $objFrais->ajoutFichedeFrais($mail, $motif, $nbkm, $peage, $hebergement,$trajet);
             
             if ($test == true) 

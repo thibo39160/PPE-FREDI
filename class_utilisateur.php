@@ -80,22 +80,24 @@ class utilisateur {
     
     
     //---------------FUNCTION MIKA------------------------
-    function pushInfosUser($conn,$courriel,$mdp)
+    function pushInfosUser($conn,$courrielR,$mdpR)
     {
-            $req = "insert into adherents (`adresse-mail`,mdp) values(?,?)";
+            $req = "UPDATE demandeurs SET mdp = ? WHERE `adresse-mail`= ? " ;            
+
             
             $qid = $conn->prepare($req);
             
-            $qid->bindParam(1, $courriel, PDO::PARAM_STR,20);
-            $qid->bindParam(2, $mdp, PDO::PARAM_STR,20);
+            $qid->bindParam(2, $courrielR, PDO::PARAM_STR,20);
+            $qid->bindParam(1, $mdpR, PDO::PARAM_STR,20);
             
-            $qid->execute();            
-
+          
+            
+            $qid->execute();  
             
             $qid->closeCursor();
-            $connexion=NULL;
+            $connexion=NULL;     
             
-            return $row;
+            echo "Vos modifications ont bien &eacutet&eacute prises en compte";
             
     }
     
@@ -112,8 +114,7 @@ class utilisateur {
             
             $qidVerif->closeCursor();
             $connexion=NULL;
-            
-            echo "Vos modifications ont bien été prises en compte";
+           
             
     }
     

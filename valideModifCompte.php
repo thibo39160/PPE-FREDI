@@ -15,8 +15,6 @@ try{
         $user = new utilisateur();
         $user->pushInfosUser($connexion,$courriel,$mdp);
 
-
-
         echo '<br>';
         echo '<br>';
         echo '<br>';

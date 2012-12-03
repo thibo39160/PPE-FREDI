@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'class_connexionBDD.php';
 include 'class_utilisateur.php'; 
 ?>
@@ -14,8 +14,7 @@ include 'class_utilisateur.php';
         function verif_formulaire()
         {
             var MDP = document.formulaire.mot_de_passe.value;
-            var MDP2 = document.formulaire.mot_de_passe2.value;
-            var Courriel = document.formulaire.courriel.value;
+            var MDP2 = document.formulaire.mot_de_passe2.value;            
 
          if(MDP == "") {
            alert("Veuillez entrer votre nouveau mot de passe!");   
@@ -34,16 +33,13 @@ include 'class_utilisateur.php';
          else {
            return true;
          }
-         if(Courriel == "") {
-           alert("Veuillez entrer votre nouvelle adresse mail!");   
+         if (MDP == <?php $password ;?>){
+           alert ("\nTon mot de passe est identique au premier.Il faut recommencer.")
            return false;
-           Courriel.focus();
-          }
-         if(Courriel.indexOf('@') == -1) {
-           alert("Veuillez mettre l'@!");   
-           return false;
-           Courriel.focus();
-          }
+         }
+         else {
+           return true;
+         }         
 
         }
         //-->
@@ -77,7 +73,7 @@ include 'class_utilisateur.php';
             <b>Sexe :</b> <?php echo $user->sexe;?><br><br>  
         </div>
         <div class="courriel"> 
-            <b>Confirmation de l'adresse-mail :</b> <input type="text" size="40" value="<?php echo $user->courriel;?> " name="courriel"><br><br>
+            <b>Confirmation de l'adresse-mail :</b> <input type="hidden" size="40" value="<?php echo $user->courriel;?>" name="courriel"><?php echo $user->courriel;?><br><br>
         </div>
         <div class="mdp"> 
             <b>Nouveau mot de Passe :</b>  <input type="password" size="40" name="mot_de_passe"><br><br><form>

@@ -31,8 +31,7 @@ class connexion {
            }
            else
            {            
-            $this->_liaison->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "<script>alert('Choix BDD OK');</script>";
+            $this->_liaison->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);            
             
            }
         }

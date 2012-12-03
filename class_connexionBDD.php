@@ -2,7 +2,7 @@
 
 class connexion {
  
-    	private static $_liaison;
+        public $_liaison;
 
         
         function __construct() { }
@@ -21,6 +21,24 @@ class connexion {
             return true;
            }
         }
+        
+        //---------------FUNCTION MIKA------------------------
+        function connexonBDDinPDO()
+        {              
+           $this->_liaison = new PDO("mysql:host=localhost;dbname=fredi","root","");
+                             
+           if ($this->_liaison == false) {
+              echo "<script>alert('Erreur lors de connexion BDD');</script>";                           
+           }
+           else
+           {            
+            $this->_liaison->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "<script>alert('Choix BDD OK');</script>";
+            
+           }
+        }
+        
+        
         
         function deconnexionBDD()
         {

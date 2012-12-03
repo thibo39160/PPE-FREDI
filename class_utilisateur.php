@@ -2,29 +2,56 @@
 
 class utilisateur {
  
-    private $nom;
-    private $prenom;
-    private $sexe;
-    private $mdp ;
-    private $courriel;
-    private $rue;
-    private $cp;
-    private $ville;
-    private $numrecu;
+    public $nom;
+    public $prenom;
+    public $sexe;
+    public $mdp ;
+    public $courriel;
+    public $rue;
+    public $cp;
+    public $ville;
+    public $numrecu;
     
-    
-     public function init($nom1,$prenom,$sexe,$mdp,$courriel1,$rue,$cp,$ville,$numrecu)
+     //---------------FUNCTION MIKA------------------------ 
+     public function init2($conn,$mdp,$courriel)
      {
-         $this->nom = $nom1;
+         
+            $req = "select `adresse-mail` as mail,nom,prenom,sexe,rue,cp,ville from demandeurs where `adresse-mail` = ?";
+            
+            $qid = $conn->prepare($req);
+            
+            $qid->bindParam(1,$courriel , PDO::PARAM_STR,20);
+            
+            $qid->execute();            
+            
+            $row = $qid->fetch(PDO::FETCH_OBJ);
+            
+            $this->courriel = $row->mail;
+            $this->nom = $row->nom;   
+            $this->prenom = $row->prenom;
+            $this->sexe = $row->sexe;
+            $this->rue = $row->rue;
+            $this->cp = $row->cp;
+            $this->ville = $row->ville;
+                 
+            $qid->closeCursor();
+            $connexion=NULL;
+     }
+    
+    public function init($nom,$prenom,$sexe,$mdp,$courriel,$rue,$cp,$ville,$numrecu)
+     {
+         $this->nom = $nom;
          $this->prenom = $prenom;
          $this->sexe = $sexe;
          $this->mdp = $mdp;
-         $this->courriel = $courriel1;
+         $this->courriel = $courriel;
          $this->rue = $rue;
          $this->cp = $cp;
          $this->ville = $ville;
          $this->numrecu = $numrecu;
      }
+     
+     
      
      
         
@@ -43,33 +70,53 @@ class utilisateur {
     
     
     //---------------FUNCTION MIKA------------------------
-    function checkUsersInBdd($connexion)
+    function pushInfosUser($conn,$courriel,$mdp)
     {
-            $reqVerif = "select count(*) from demandeur where `adresse-mail` = ?";
+            $req = "insert into adherents (`adresse-mail`,mdp) values(?,?)";
             
-            $qidVerif = $connexion->prepare($reqVerif);
+            $qid = $conn->prepare($req);
+            
+            $qid->bindParam(1, $courriel, PDO::PARAM_STR,20);
+            $qid->bindParam(2, $mdp, PDO::PARAM_STR,20);
+            
+            $qid->execute();            
+
+            
+            $qid->closeCursor();
+            $connexion=NULL;
+            
+            return $row;
+            
+    }
+    
+    //---------------FUNCTION MIKA------------------------
+    function checkUsersInBdd($conn)
+    {
+            $reqVerif = "select count(*) from demandeurs where `adresse-mail` = ?";
+            
+            $qidVerif = $conn->prepare($reqVerif);
             
             $qidVerif->bindParam(1, $this->courriel, PDO::PARAM_STR,20);
             
-            $sqlresult = $qidVerif->rowCount();
+            $sqlresult = $qidVerif->execute();
             
             $qidVerif->closeCursor();
             $connexion=NULL;
             
-            return $sqlresult;
+            echo "Vos modifications ont bien été prises en compte";
             
     }
     
+    //---------------FUNCTION MIKA------------------------
     function Inscription($conn,$NomAdmin,$PrenomAdmin,$MailAdmin)
     {
 
-                    $req = "INSERT into demandeurs (`adresse-mail`,nom,prenom,rue,cp,ville,`num-recu`,mdp,sexe) VALUES (?,?,?,?,?,?,?,?,?)";
-                    //$req = "select * from demandeurs";
+                    $req = "INSERT into demandeurs (`adresse-mail`,nom,prenom,rue,cp,ville,`num-recu`,mdp,sexe) VALUES (?,?,?,?,?,?,?,?,?)";                    
                     
                     $qid =  $conn->prepare($req);
 
                     
-                    $qid->bindParam(1, $c, PDO::PARAM_STR,50);
+                    $qid->bindParam(1, $this->courriel, PDO::PARAM_STR,50);
                     $qid->bindParam(2, $this->nom, PDO::PARAM_STR,20);
                     $qid->bindParam(3, $this->prenom, PDO::PARAM_STR,20);
                     $qid->bindParam(4, $this->rue, PDO::PARAM_STR,20);

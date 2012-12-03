@@ -1,7 +1,10 @@
 <html>
-<head>> 
+<head>
 <LINK rel="stylesheet" type="text/css" href="general.css">
 <title>Inscription</title>
+ <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/navigation.css"/>
+                <link rel="stylesheet" type="text/css" href="css/inscription.css"/>
 <script type="text/javascript">
 <!--
 function verif_formulaire()
@@ -89,26 +92,23 @@ function verif_formulaire()
 //-->
 </script>
 </head>
-<body bgcolor="#EEEEEE" text="#000000">
-
-<h1>Inscription</h1>
-<p>Les champs avec * sont obligatoires</p>
-<form name="formulaire" action="valideInscription.php" method="post" OnSubmit="return verif_formulaire()">
-<pre>
-*Nom:     <input type="text" size="40" name="nom">
-*Prenom:     <input type="text" size="40" name="prenom">
-*Sexe:     <input type="text" size="40" name="sexe">
-*Mot de Passe:  <input type="password" size="40" name="mot_de_passe"> <form>
-*Confirmer votre mot de Passe:  <input type="password" size="40" name="mot_de_passe2">
-*Adresse-mail:   <input type="text" size="40" name="courriel">
-*Rue:    <input type="text" size="40" name="rue">
-*Code-Postal:    <input type="text" size="40" name="cp">
-*Ville:    <input type="text" size="40" name="ville">
-formulaire: <input type="submit" value="Envoyer"><input type="reset" value="Tout enlever">
-
-Pour envoyer vous devez &ecirctre connect&eacute &agrave Internet!
-</pre>
-</form>
+<body>
+<div id="title">INSCRIPTION</div>
+<div id="inscription">
+    <span style="font-style: italic;">Les champs avec * sont obligatoires</span>
+    <form name="formulaire" action="valideInscription.php" method="post" OnSubmit="return verif_formulaire()">
+    <br><br>
+    <div id="nom">*Nom:<input id="input_nom"type="text" size="40" name="nom"></div>
+    <div id="prenom">*Prenom:<input id="input_prenom" type="text" size="40" name="prenom"></div>
+    <div id="sexe">*Sexe:<input id="input_sexe" type="text" size="40" name="sexe"></div>
+    <div id="mdp">*Mot de Passe:<input id="input_mdp" type="password" size="40" name="mot_de_passe"></div>
+    <div id="mail">*Adresse-mail:<input id="input_mail" type="text" size="40" name="courriel"></div>
+    <div id="rue">*Rue:<input id="input_rue" type="text" size="40" name="rue"></div>
+    <div id="cp">*Code-Postal:<input id="input_cp" type="text" size="40" name="cp"></div>
+    <div id="ville">*Ville:<input id="input_ville" type="text" size="40" name="ville"></div>
+    <input type="submit" value="Envoyer" id="inscription_id"><input type="reset" value="Annuler" id="inscription_reset">
+    </form>
+</div>
 
 </body>
 </html>

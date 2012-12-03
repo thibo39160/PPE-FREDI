@@ -10,6 +10,7 @@ function verif_formulaire()
     var Prenom = document.formulaire.prenom.value;
     var Sexe = document.formulaire.sexe.value;
     var MDP = document.formulaire.mot_de_passe.value;
+    var MDP2 = document.formulaire.mot_de_passe.value;
     var Courriel = document.formulaire.courriel.value;
     var Rue = document.formulaire.rue.value;
     var CP = document.formulaire.cp.value;
@@ -35,8 +36,20 @@ function verif_formulaire()
    return false;
    MDP.focus();
   }
+ if(MDP2 == "") {
+   alert("Veuillez confirmer votre mot de passe!");   
+   return false;
+   MDP2.focus();
+  }
+ if (MDP != MDP2){
+   alert ("\nTon mot de passe n'est pas identique.Il faut encore essayer.")
+   return false;
+  }
+ else {
+   return true;
+  }
  if(Courriel == "") {
-   alert("Veuillez mettre l'@!");   
+   alert("Veuillez entrer votre adresse mail!");   
    return false;
    Courriel.focus();
   }
@@ -86,6 +99,7 @@ function verif_formulaire()
 *Prenom:     <input type="text" size="40" name="prenom">
 *Sexe:     <input type="text" size="40" name="sexe">
 *Mot de Passe:  <input type="password" size="40" name="mot_de_passe"> <form>
+*Confirmer votre mot de Passe:  <input type="password" size="40" name="mot_de_passe2">
 *Adresse-mail:   <input type="text" size="40" name="courriel">
 *Rue:    <input type="text" size="40" name="rue">
 *Code-Postal:    <input type="text" size="40" name="cp">

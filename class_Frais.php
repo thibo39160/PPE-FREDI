@@ -86,9 +86,13 @@
                            
                     $renvoi2 .='<fieldset>';
                     $renvoi2 .='<legend>Elements forfaitises</legend>';
-                    $renvoi2 .='<label for="motif">motif :'.$data2['motif'].'</label>';
                     $renvoi2 .='<p>';
-                    $renvoi2 .='<label for="idFrais">Date fiche de Frais:'.$data2['date'].'</label>';                 
+                    $renvoi2 .='<label for="idFrais"> Date : '.$data2['date'].'</label>';
+                    $renvoi2 .='<p>';
+                    $renvoi2 .='<form action="v_ConfirmationMiseJourTableComptable.php?id=0" method="post" id="lol">';
+                    $renvoi2 .='<input type="text" name="motif" size="20" maxlength="20" value="'.$data2['motif'].'" >';
+                    $renvoi2 .='<input type="submit" value="Valider cette ligne" />';
+                    $renvoi2 .='</form>';
                     $renvoi2 .='<p>';
                     $renvoi2 .= '<form action="v_ConfirmationMiseJourTableComptable.php?id=1" method="post" id="lol">';
 		    $renvoi2 .='<label for="idFrais"> km :</label>';
@@ -135,25 +139,38 @@
 
                     mysql_connect($host, $user,$passwd) or die("erreur de connexion au serveur");
                         mysql_select_db($bdd) or die("erreur de connexion a la base de donnees");
+            if($unid == '0')
+            {
+                $query ="UPDATE lignes_frais,demandeurs set `motif`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
+                $result = mysql_query($query);
+            }
             if($unid == '1')
             {
                 $query ="UPDATE lignes_frais,demandeurs set `km-valide`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
                 $result = mysql_query($query);
+                $query2 ="UPDATE lignes_frais,demandeurs set `km`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
+                $result2 = mysql_query($query2);              
             }
             if($unid == '2')
             {
                 $query ="UPDATE lignes_frais,demandeurs set `peage-valide`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
                 $result = mysql_query($query);
+                $query2 ="UPDATE lignes_frais,demandeurs set `cout-peage`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
+                $result2 = mysql_query($query2);
             }
             if($unid == '3')
             {
                 $query ="UPDATE lignes_frais,demandeurs set `repas-valide`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
                 $result = mysql_query($query);
+                 $query2 ="UPDATE lignes_frais,demandeurs set `cout-repas`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
+                $result2 = mysql_query($query2);
             }
             if($unid == '4')
             {
                 $query ="UPDATE lignes_frais,demandeurs set `hebergement-valide`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
                 $result = mysql_query($query);
+                $query2 ="UPDATE lignes_frais,demandeurs set `cout-hebergement`= '$unFrais' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
+                $result2 = mysql_query($query2);
             }          
         }
         
@@ -164,8 +181,8 @@
             $bdd = "fredi";
             $passwd  = "";
 
-                    mysql_connect($host, $user,$passwd) or die("erreur de connexion au serveur");
-                        mysql_select_db($bdd) or die("erreur de connexion a la base de donnees");
+            mysql_connect($host, $user,$passwd) or die("erreur de connexion au serveur");
+            mysql_select_db($bdd) or die("erreur de connexion a la base de donnees");
             $query ="UPDATE lignes_frais,demandeurs set `valide`= '1' where lignes_frais.`adresse-mail` = demandeurs.`adresse-mail` and demandeurs.nom ='$unUtilisateur' and lignes_frais.`Numero_fiche`='$unNumero'";
             $result = mysql_query($query);
         }

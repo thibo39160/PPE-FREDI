@@ -7,6 +7,10 @@ $pdo = new class_Frais();
 <form method="POST"  action="ficheFrais.php?action=AffichageMiseAJour"> 
 <?php            
          $id = $_REQUEST['id'];
+         if ($id == '0')
+         {
+             $idFrais =$_POST['motif']; 
+         }
          if ($id == '1')
          {
              $idFrais =$_POST['km']; 

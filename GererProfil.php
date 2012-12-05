@@ -7,6 +7,10 @@ include 'class_utilisateur.php';
     
     <head>
         <LINK rel="stylesheet" type="text/css" href="general.css">
+        <LINK rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/navigation.css">
+
+        
         <title>Profil</title>
         
         <script type="text/javascript">
@@ -47,6 +51,10 @@ include 'class_utilisateur.php';
     </head>
     
     <body>
+         <?php
+       		include ("navigation.php");
+   		 ?>
+
         <?php
         $login = "kriegwilliamsen@gmail.com";//$_SESSION["login"];
         $password = "design"; //$_SESSION["password"];

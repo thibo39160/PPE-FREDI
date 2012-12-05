@@ -1,4 +1,4 @@
-#inscription{
+﻿#inscription{
     margin-left:auto;
     margin-right: auto;
     height: 400px;
@@ -40,13 +40,13 @@ input{
     background-color: white;
     border:simple ;
 }
-#input_nom{margin-left: 200px;}
+#input_nom{margin-left: 199px;}
 #input_ville{margin-left: 204px;}
-#input_cp{margin-left: 200px;}
-#input_mail{margin-left: 150px;}
-#input_mdp{margin-left: 147px;}
-#input_cp{margin-left: 155px;}
-#input_rue{margin-left: 207px;}
+#input_cp{margin-left: 198px;}
+#input_mail{margin-left: 149px;}
+#input_mdp{margin-left: 144px;}
+#input_cp{margin-left: 154px;}
+#input_rue{margin-left: 206px;}
 #inscription_reset{margin-left: 200px;}
 #inscription_id{margin-left: 200px;}
 #input_prenom{margin-left: 182px;}

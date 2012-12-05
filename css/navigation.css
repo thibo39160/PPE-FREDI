@@ -1,4 +1,4 @@
-#navigation{
+﻿#navigation{
     position:fixed;
     top:0px; right: 0px; left: 0px;
     height:40px;
@@ -31,13 +31,13 @@
     color:#5e5e5e;
     height: 40px;
     padding-top: 10px;
-    width: 100px;
+    width: 200px;
     text-align: center;
     
 }
 #deconnexion_link{
     position:fixed;
-    margin-left: 500px;
+    margin-left: 600px;
     top:0px;  
     color:#5e5e5e;
     height: 40px;
@@ -46,7 +46,19 @@
     text-align: center;
 }
 
+#PDF_link
+{
+    position:fixed;
+    margin-left: 750px;
+    top:0px;  
+    color:#5e5e5e;
+    height: 40px;
+    padding-top: 2px;
+    width: 150px;
+    text-align: center;
+}
 
+#PDF_link:hover{background-color: #3e3e3e;}
 #deconnexion_link:hover{background-color: #3e3e3e;}
 #profil_link:hover{background-color: #3e3e3e;}
 #home_link:hover{background-color: #3e3e3e;}

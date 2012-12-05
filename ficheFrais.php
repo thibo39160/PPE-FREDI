@@ -7,6 +7,10 @@ $_SESSION['fiche'] = 'pas de fiche';
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" xml:lang="fr" />
+        <LINK rel="stylesheet" type="text/css" href="general.css">
+        <LINK rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/navigation.css">
+
 <title>Gestion Fiche de Frais</title>
 <script type="text/javascript" src="./dept_xhr.js" charset="iso_8859-1"></script>
 <script>
@@ -26,8 +30,10 @@ function Verification()
 }
 </script>
 <?php
+
 include ("class_connexionBDD.php");
 include ("class_Frais.php");
+include ("navigation.php");
 $action = $_GET['action'];
 $coBDD = new connexion();
 $pdo = new class_Frais();
@@ -52,9 +58,9 @@ switch ($action)
             }   
         ?>
 </head>
-
+<br><br><br><br><br><br><br>
         <form action="" method="post" id="chgdept" onSubmit="Verification()">
-          <fieldset style="border: 3px double #333399">
+          <fieldset style="border: 3px double whitesmoke; text-align:center" >
           <legend>Utilisateur</legend>
             <select name="region" id="region" onchange="getDepartements(this.value);">
               <option value="vide">- - - Choisissez un utilisateur - - -</option>
@@ -97,7 +103,7 @@ switch ($action)
                  }   
              ?>
              <form action="ficheFrais.php?action=AffichageFicheFrais" method="post" id="chgdept" >
-               <fieldset style="border: 3px double #333399">
+               <fieldset style="border: 3px double whitesmoke; text-align:center">
                <legend>Utilisateur</legend>
                  <select name="region" id="region" onchange="getDepartements(this.value);">
                  <?php
@@ -147,7 +153,7 @@ switch ($action)
                  }   
              ?>
              <form action="ficheFrais.php?action=AffichageFicheFrais" method="post" id="chgdept" >
-               <fieldset style="border: 3px double #333399">
+               <fieldset style="border: 3px double whitesmoke; text-align:center">
                <legend>Utilisateur</legend>
                  <select name="region" id="region" onchange="getDepartements(this.value);">
                  <?php

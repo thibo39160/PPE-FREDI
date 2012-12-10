@@ -6,6 +6,7 @@ include 'class_utilisateur.php';
 <html>
     
     <head>
+        
         <LINK rel="stylesheet" type="text/css" href="general.css">
         <LINK rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/navigation.css">
